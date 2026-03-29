@@ -1,7 +1,10 @@
 import axios from 'axios';
 
+const defaultApiUrl =
+  process.env.NODE_ENV === 'production' ? '/api' : 'http://localhost:5000/api';
+
 const axiosClient = axios.create({
-  baseURL: process.env.REACT_APP_API_URL || 'http://localhost:5000/api',
+  baseURL: process.env.REACT_APP_API_URL || defaultApiUrl,
 });
 
 axiosClient.interceptors.request.use((config) => {
